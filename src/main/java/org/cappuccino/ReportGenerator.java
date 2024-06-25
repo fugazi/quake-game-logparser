@@ -45,4 +45,23 @@ public class ReportGenerator {
             System.out.println((i + 1) + ". " + entry.getKey() + ": " + entry.getValue() + " kills");
         }
     }
+
+    public void generateDeathCauseReport(List<Game> games) {
+        log.info("Generating death cause report");
+        Map<String, Integer> totalDeathsByMeans = new HashMap<>();
+
+        for (Game game : games) {
+            for (Map.Entry<String, Integer> entry : game.getDeathsByMeans().entrySet()) {
+                totalDeathsByMeans.merge(entry.getKey(), entry.getValue(), Integer::sum);
+            }
+        }
+
+        List<Map.Entry<String, Integer>> sortedDeathsByMeans = new ArrayList<>(totalDeathsByMeans.entrySet());
+        sortedDeathsByMeans.sort(Map.Entry.<String, Integer>comparingByValue().reversed());
+
+        System.out.println("Death Cause Ranking:");
+        for (Map.Entry<String, Integer> entry : sortedDeathsByMeans) {
+            System.out.println(entry.getKey() + ": " + entry.getValue() + " deaths");
+        }
+    }
 }
