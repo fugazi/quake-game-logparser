@@ -31,6 +31,7 @@ public class QuakeLogParser {
 
         reportGenerator.generateGameReports(games);
         reportGenerator.generatePlayerRanking(games);
+        reportGenerator.generateDeathCauseReport(games);
     }
 
     public static void main(String[] args) {
