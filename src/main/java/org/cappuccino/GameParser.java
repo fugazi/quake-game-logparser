@@ -15,6 +15,12 @@ public class GameParser {
     private static final String KILL_PATTERN = "Kill:";
     private static final String SHUTDOWN_GAME_PATTERN = "ShutdownGame:";
 
+    private final KillProcessor killProcessor;
+
+    public GameParser() {
+        this.killProcessor = new KillProcessor();
+    }
+
     public List<Game> parseGames(InputStream inputStream) throws IOException {
         List<Game> games = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
