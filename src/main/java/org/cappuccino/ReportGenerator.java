@@ -7,8 +7,17 @@ import java.util.Map;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * The ReportGenerator class generates various reports based on the parsed game data.
+ * This class is responsible for creating game reports, player rankings, and death cause reports.
+ */
 @Slf4j
 public class ReportGenerator {
+    /**
+     * Generates detailed reports for each game.
+     *
+     * @param games the list of games to generate reports for.
+     */
     public void generateGameReports(List<Game> games) {
         log.info("Generating game reports");
         for (int i = 0; i < games.size(); i++) {
@@ -26,6 +35,11 @@ public class ReportGenerator {
         }
     }
 
+    /**
+     * Generates and prints a player ranking report based on the total kills across all games.
+     *
+     * @param games A list of Game objects to generate the player ranking from.
+     */
     public void generatePlayerRanking(List<Game> games) {
         log.info("Generating player ranking");
         Map<String, Integer> totalKills = new HashMap<>();
@@ -46,6 +60,11 @@ public class ReportGenerator {
         }
     }
 
+    /**
+     * Generates and prints a death cause report, ranking the causes of death by frequency.
+     *
+     * @param games A list of Game objects to generate the death cause report from.
+     */
     public void generateDeathCauseReport(List<Game> games) {
         log.info("Generating death cause report");
         Map<String, Integer> totalDeathsByMeans = new HashMap<>();
