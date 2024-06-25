@@ -1,5 +1,6 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.IOException;
@@ -104,5 +105,47 @@ class QuakeLogParserTest {
         assertEquals(1, game5Kills.get("Assasinu Credi"), "Game 5: Incorrect kills for Assasinu Credi");
         assertEquals(2, game5Kills.get("Isgalamido"), "Game 5: Incorrect kills for Isgalamido");
         assertEquals(1, game5Kills.get("Zeh"), "Game 5: Incorrect kills for Zeh");
+    }
+
+    /**
+     * Test method to verify the correct parsing and the presence of the "kills_by_means" map in each parsed game.
+     *
+     * @throws IOException if there's an error reading the JSON file
+     */
+    @Test
+    void testKillsByMeans() throws IOException {
+        // Load the pre-parsed games from JSON
+        InputStream parsedGamesStream = getClass().getClassLoader().getResourceAsStream(PARSED_GAMES_FILE);
+        assertNotNull(parsedGamesStream, "Parsed games file not found");
+        List<Map<String, Object>> parsedGames = objectMapper.readValue(parsedGamesStream, new TypeReference<>() {
+        });
+
+        // Verify the "kills by means" for each game
+        for (Map<String, Object> game : parsedGames) {
+            Map<String, Integer> killsByMeans = (Map<String, Integer>) game.get("kills_by_means");
+            assertNotNull(killsByMeans, "Kills by means should not be null");
+        }
+
+        // Specific assertions for each game
+        Map<String, Integer> game2KillsByMeans = (Map<String, Integer>) parsedGames.get(1).get("kills_by_means");
+        assertEquals(7, game2KillsByMeans.get("MOD_TRIGGER_HURT"), "Game 2: Incorrect MOD_TRIGGER_HURT kills");
+        assertEquals(1, game2KillsByMeans.get("MOD_FALLING"), "Game 2: Incorrect MOD_FALLING kills");
+        assertEquals(3, game2KillsByMeans.get("MOD_ROCKET_SPLASH"), "Game 2: Incorrect MOD_ROCKET_SPLASH kills");
+
+        Map<String, Integer> game3KillsByMeans = (Map<String, Integer>) parsedGames.get(2).get("kills_by_means");
+        assertEquals(2, game3KillsByMeans.get("MOD_TRIGGER_HURT"), "Game 3: Incorrect MOD_TRIGGER_HURT kills");
+        assertEquals(1, game3KillsByMeans.get("MOD_FALLING"), "Game 3: Incorrect MOD_FALLING kills");
+        assertNull(game3KillsByMeans.get("MOD_ROCKET_SPLASH"), "Game 3: Incorrect MOD_ROCKET_SPLASH kills");
+
+        Map<String, Integer> game4KillsByMeans = (Map<String, Integer>) parsedGames.get(3).get("kills_by_means");
+        assertEquals(9, game4KillsByMeans.get("MOD_TRIGGER_HURT"), "Game 4: Incorrect MOD_TRIGGER_HURT kills");
+        assertEquals(11, game4KillsByMeans.get("MOD_FALLING"), "Game 4: Incorrect MOD_FALLING kills");
+        assertEquals(51, game4KillsByMeans.get("MOD_ROCKET_SPLASH"), "Game 4: Incorrect MOD_ROCKET_SPLASH kills");
+
+        Map<String, Integer> game5KillsByMeans = (Map<String, Integer>) parsedGames.get(4).get("kills_by_means");
+        assertEquals(5, game5KillsByMeans.get("MOD_TRIGGER_HURT"), "Game 5: Incorrect MOD_TRIGGER_HURT kills");
+        assertNull(game5KillsByMeans.get("MOD_FALLING"), "Game 5: Incorrect MOD_FALLING kills");
+        assertEquals(4, game5KillsByMeans.get("MOD_ROCKET_SPLASH"), "Game 5: Incorrect MOD_ROCKET_SPLASH kills");
+
     }
 }
