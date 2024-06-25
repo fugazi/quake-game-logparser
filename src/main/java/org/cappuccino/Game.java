@@ -12,11 +12,13 @@ public class Game {
     private int totalKills;
     private final Set<String> players;
     private final Map<String, Integer> kills;
+    private final Map<String, Integer> deathsByMeans;
 
     public Game() {
         this.totalKills = 0;
         this.players = new HashSet<>();
         this.kills = new HashMap<>();
+        this.deathsByMeans = new HashMap<>();
     }
 
     public void addKill() {
@@ -35,4 +37,7 @@ public class Game {
         kills.merge(player, -1, Integer::sum);
     }
 
+    public void addDeathCause(String cause) {
+        deathsByMeans.merge(cause, 1, Integer::sum);
+    }
 }
