@@ -2,7 +2,8 @@
   {
     "total_kills": 0,
     "players": [],
-    "kills": {}
+    "kills": {},
+    "kills_by_means": {}
   },
   {
     "total_kills": 11,
@@ -13,6 +14,11 @@
     "kills": {
       "Isgalamido": -5,
       "Mocinha": 0
+    },
+    "kills_by_means": {
+      "MOD_TRIGGER_HURT": 7,
+      "MOD_FALLING": 1,
+      "MOD_ROCKET_SPLASH": 3
     }
   },
   {
@@ -28,6 +34,11 @@
       "Mocinha": 0,
       "Isgalamido": 1,
       "Zeh": -2
+    },
+    "kills_by_means": {
+      "MOD_TRIGGER_HURT": 2,
+      "MOD_FALLING": 1,
+      "MOD_ROCKET": 1
     }
   },
   {
@@ -43,6 +54,15 @@
       "Assasinu Credi": 13,
       "Isgalamido": 19,
       "Zeh": 20
+    },
+    "kills_by_means": {
+      "MOD_MACHINEGUN": 4,
+      "MOD_RAILGUN": 8,
+      "MOD_TRIGGER_HURT": 9,
+      "MOD_FALLING": 11,
+      "MOD_ROCKET_SPLASH": 51,
+      "MOD_SHOTGUN": 2,
+      "MOD_ROCKET": 20
     }
   },
   {
@@ -58,6 +78,12 @@
       "Assasinu Credi": 1,
       "Isgalamido": 2,
       "Zeh": 1
+    },
+    "kills_by_means": {
+      "MOD_RAILGUN": 1,
+      "MOD_TRIGGER_HURT": 5,
+      "MOD_ROCKET_SPLASH": 4,
+      "MOD_ROCKET": 4
     }
   }
 ]
