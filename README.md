@@ -4,10 +4,10 @@
 
 The Quake Log Parser is a Java application designed to parse and analyze log files from Quake 3 Arena game servers.
 It extracts valuable information about game sessions, player statistics, and death causes, providing comprehensive reports and rankings.
+Also Unit Tests are included to verify the correct parsing of Quake log files and exercise the game statistics.
 
 ## Table of Contents
 
-- [Features](#features)
 - [Features](#features)
 - [Project Structure](#project-structure)
 - [Class Descriptions](#class-descriptions)
@@ -31,7 +31,7 @@ It extracts valuable information about game sessions, player statistics, and dea
 ## Project Structure
 
 ```
-cloudwalk-quake-game/
+quake-game-logparser/
 ├── src/
 │   ├── main/
 │   │   ├── java/
@@ -95,7 +95,7 @@ This command will compile the source code, run the tests, and package the applic
 To run the Quake Log Parser, use the following command:
 
 ```
-java -cp target/cloudwalk-quake-game-1.0-SNAPSHOT.jar org.cappuccino.QuakeLogParser
+java -cp target/quake-game-logparser-1.0-SNAPSHOT.jar org.cappuccino.QuakeLogParser
 ```
 also
 ```
@@ -122,7 +122,7 @@ target/surefire-reports
 
 ## Contact
 
-For any questions or concerns, please drop an email to `itmteleco@gmail.com`.
+For any questions or concerns, please drop an email to.
 ```
 Developed by Douglas Urrea Ocampo
 https://www.douglasfugazi.co
