@@ -17,7 +17,7 @@
         <assertj.version>3.26.3</assertj.version>
         <lombok.version>1.18.34</lombok.version>
         <slf4j.version>2.1.0-alpha1</slf4j.version>
-        <logback.version>1.5.7</logback.version>
+        <logback.version>1.5.8</logback.version>
         <jackson.version>2.18.0-rc1</jackson.version>
     </properties>
 
